@@ -3,93 +3,93 @@
 import React, { useState } from "react";
 
 export default function ContactUs() {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  // const [fullname, setFullname] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [subject, setSubject] = useState("");
+  // const [message, setMessage] = useState("");
 
-  //   Form validation
-  const [errors, setErrors] = useState({});
+  // //   Form validation
+  // const [errors, setErrors] = useState({});
 
-  //   Setting button text
-  const [buttonText, setButtonText] = useState("Send");
+  // //   Setting button text
+  // const [buttonText, setButtonText] = useState("Send");
 
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showFailureMessage, setShowFailureMessage] = useState(false);
+  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  // const [showFailureMessage, setShowFailureMessage] = useState(false);
 
-  const handleValidation = () => {
-    let tempErrors: Errors = {};
-    let isValid = true;
+  // const handleValidation = () => {
+  //   let tempErrors: Errors = {};
+  //   let isValid = true;
 
-    if (!fullname.trim()) {
-      tempErrors["fullname"] = true;
-      isValid = false;
-    }
-    if (!email.trim()) {
-      tempErrors["email"] = true;
-      isValid = false;
-    }
-    if (!subject.trim()) {
-      tempErrors["subject"] = true;
-      isValid = false;
-    }
-    if (!message.trim()) {
-      tempErrors["message"] = true;
-      isValid = false;
-    }
+  //   if (!fullname.trim()) {
+  //     tempErrors["fullname"] = true;
+  //     isValid = false;
+  //   }
+  //   if (!email.trim()) {
+  //     tempErrors["email"] = true;
+  //     isValid = false;
+  //   }
+  //   if (!subject.trim()) {
+  //     tempErrors["subject"] = true;
+  //     isValid = false;
+  //   }
+  //   if (!message.trim()) {
+  //     tempErrors["message"] = true;
+  //     isValid = false;
+  //   }
 
-    setErrors({ ...tempErrors });
-    console.log("errors", tempErrors);
-    return isValid;
-  };
+  //   setErrors({ ...tempErrors });
+  //   console.log("errors", tempErrors);
+  //   return isValid;
+  // };
 
-  //   const [form, setForm] = useState(false);
+  // //   const [form, setForm] = useState(false);
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
 
-    let isValidForm = handleValidation();
+  //   let isValidForm = handleValidation();
 
-    if (isValidForm) {
-      setButtonText("Sending");
-      const res = await fetch("/api/sendgrid", {
-        body: JSON.stringify({
-          email: email,
-          fullname: fullname,
-          subject: subject,
-          message: message,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
+  //   if (isValidForm) {
+  //     setButtonText("Sending");
+  //     const res = await fetch("/api/sendgrid", {
+  //       body: JSON.stringify({
+  //         email: email,
+  //         fullname: fullname,
+  //         subject: subject,
+  //         message: message,
+  //       }),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "POST",
+  //     });
 
-      const { error } = await res.json();
-      if (error) {
-        console.log(error);
-        setShowSuccessMessage(false);
-        setShowFailureMessage(true);
-        setButtonText("Send");
+  //     const { error } = await res.json();
+  //     if (error) {
+  //       console.log(error);
+  //       setShowSuccessMessage(false);
+  //       setShowFailureMessage(true);
+  //       setButtonText("Send");
 
-        // Reset form fields
-        setFullname("");
-        setEmail("");
-        setMessage("");
-        setSubject("");
-        return;
-      }
-      setShowSuccessMessage(true);
-      setShowFailureMessage(false);
-      setButtonText("Send");
-      // Reset form fields
-      setFullname("");
-      setEmail("");
-      setMessage("");
-      setSubject("");
-    }
-    console.log(fullname, email, subject, message);
-  };
+  //       // Reset form fields
+  //       setFullname("");
+  //       setEmail("");
+  //       setMessage("");
+  //       setSubject("");
+  //       return;
+  //     }
+  //     setShowSuccessMessage(true);
+  //     setShowFailureMessage(false);
+  //     setButtonText("Send");
+  //     // Reset form fields
+  //     setFullname("");
+  //     setEmail("");
+  //     setMessage("");
+  //     setSubject("");
+  //   }
+  //   console.log(fullname, email, subject, message);
+  // };
   return (
     <main>
       <header className="relative grid grid-cols-1 md:grid-cols-2 gap-4 pt-10 lg:px-40 bg-gray-100 ">
@@ -108,7 +108,7 @@ export default function ContactUs() {
           </p>
         </div>
         <form
-          onSubmit={handleSubmit}
+          // onSubmit={handleSubmit}
           className=" rounded shadow-xl flex flex-col px-8 py-8 bg-white"
         >
           <h1 className="text-2xl font-bold dark:text-black">
@@ -123,16 +123,17 @@ export default function ContactUs() {
           </label>
           <input
             type="text"
-            value={fullname}
-            onChange={(e) => {
-              setFullname(e.target.value);
-            }}
+            // value={fullname}
+            // onChange={(e) => {
+            //   setFullname(e.target.value);
+            // }}
             name="fullname"
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-black"
           />
-          {errors?.fullname && (
-            <p className="text-red-500">Fullname cannot be empty.</p>
-          )}
+          <p className="text-red-500">Fullname cannot be empty.</p>
+          {/* {errors?.fullname && (
+            
+          )} */}
 
           <label
             htmlFor="email"
@@ -143,15 +144,15 @@ export default function ContactUs() {
           <input
             type="email"
             name="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            // value={email}
+            // onChange={(e) => {
+            //   setEmail(e.target.value);
+            // }}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
           />
-          {errors?.email && (
+          {/* {errors?.email && (
             <p className="text-red-500">Email cannot be empty.</p>
-          )}
+          )} */}
 
           <label
             htmlFor="subject"
@@ -162,15 +163,15 @@ export default function ContactUs() {
           <input
             type="text"
             name="subject"
-            value={subject}
-            onChange={(e) => {
-              setSubject(e.target.value);
-            }}
+            // value={subject}
+            // onChange={(e) => {
+            //   setSubject(e.target.value);
+            // }}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-black"
           />
-          {errors?.subject && (
+          {/* {errors?.subject && (
             <p className="text-black">Subject cannot be empty.</p>
-          )}
+          )} */}
           <label
             htmlFor="message"
             className="text-black font-light mt-4 dark:text-black"
@@ -179,21 +180,21 @@ export default function ContactUs() {
           </label>
           <textarea
             name="message"
-            value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
+            // value={message}
+            // onChange={(e) => {
+            //   setMessage(e.target.value);
+            // }}
             className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-gray-500"
           ></textarea>
-          {errors?.message && (
+          {/* {errors?.message && (
             <p className="text-red-500">Message body cannot be empty.</p>
-          )}
+          )} */}
           <div className="flex flex-row items-center justify-start">
             <button
               type="submit"
               className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center hover:shadow-lg"
             >
-              {buttonText}
+              {/* {buttonText} */}
               {/* <svg
                 width="24"
                 height="24"
@@ -210,16 +211,16 @@ export default function ContactUs() {
             </button>
           </div>
           <div className="text-left">
-            {showSuccessMessage && (
-              <p className="text-green-500 font-semibold text-sm my-2">
-                Thankyou! Your Message has been delivered.
-              </p>
-            )}
-            {showFailureMessage && (
-              <p className="text-red-500">
-                Oops! Something went wrong, please try again.
-              </p>
-            )}
+            {/* {showSuccessMessage && ( */}
+            <p className="text-green-500 font-semibold text-sm my-2">
+              Thankyou! Your Message has been delivered.
+            </p>
+            {/* )} */}
+            {/* {showFailureMessage && ( */}
+            <p className="text-red-500">
+              Oops! Something went wrong, please try again.
+            </p>
+            {/* )} */}
           </div>
         </form>
       </header>
