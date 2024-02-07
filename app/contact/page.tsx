@@ -12,7 +12,7 @@ export default function ContactUs() {
   // const [errors, setErrors] = useState({});
 
   // //   Setting button text
-  // const [buttonText, setButtonText] = useState("Send");
+  const [buttonText, setButtonText] = useState("Send");
 
   // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   // const [showFailureMessage, setShowFailureMessage] = useState(false);
@@ -117,9 +117,9 @@ export default function ContactUs() {
 
           <label
             htmlFor="fullname"
-            className="text-gray-500 font-light mt-8 dark:text-black"
+            className=" font-light mt-8 dark:text-black"
           >
-            Full name<span className="text-red-500 dark:text-black">*</span>
+            Full name<span className=" dark:text-black">*</span>
           </label>
           <input
             type="text"
@@ -128,12 +128,9 @@ export default function ContactUs() {
             //   setFullname(e.target.value);
             // }}
             name="fullname"
-            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light text-black"
+            className="bg-transparent border-b py-2 pl-4 focus:outline-none focus:rounded-md focus:ring-1 ring-green-500 font-light dark:text-black"
           />
-          <p className="text-red-500">Fullname cannot be empty.</p>
-          {/* {errors?.fullname && (
-            
-          )} */}
+          {/* <p className="text-red-500">Fullname cannot be empty.</p> */}
 
           <label
             htmlFor="email"
@@ -156,7 +153,7 @@ export default function ContactUs() {
 
           <label
             htmlFor="subject"
-            className="text-gray-500 font-light mt-4 dark:text-black"
+            className=" font-light mt-4 dark:text-black"
           >
             Subject<span className="text-black">*</span>
           </label>
@@ -194,6 +191,7 @@ export default function ContactUs() {
               type="submit"
               className="px-10 mt-8 py-2 bg-[#130F49] text-gray-50 font-light rounded-md text-lg flex flex-row items-center hover:shadow-lg"
             >
+              Send
               {/* {buttonText} */}
               {/* <svg
                 width="24"
@@ -211,16 +209,16 @@ export default function ContactUs() {
             </button>
           </div>
           <div className="text-left">
-            {/* {showSuccessMessage && ( */}
+            {/* {showSuccessMessage && (
             <p className="text-green-500 font-semibold text-sm my-2">
               Thankyou! Your Message has been delivered.
             </p>
-            {/* )} */}
-            {/* {showFailureMessage && ( */}
+            )}
+            {showFailureMessage && (
             <p className="text-red-500">
               Oops! Something went wrong, please try again.
             </p>
-            {/* )} */}
+            )} */}
           </div>
         </form>
       </header>
